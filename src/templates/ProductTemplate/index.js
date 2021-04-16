@@ -1,17 +1,11 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import React from 'react';
-import { graphql } from 'gatsby';
-import {
-  Layout,
-  ImageGallery,
-  ProductQuantityAdder,
-  Button,
-  SEO,
-} from 'components';
-import { Grid, SelectWrapper, Price } from './styles';
-import CartContext from 'context/CartContext';
-import { navigate, useLocation } from '@reach/router';
-import queryString from 'query-string';
+import React from 'react'
+import { graphql } from 'gatsby'
+import { Layout, ImageGallery, ProductQuantityAdder, Button } from 'components'
+import { Grid, SelectWrapper, Price } from './styles'
+import CartContext from 'context/CartContext'
+import { navigate, useLocation } from '@reach/router'
+import queryString from 'query-string'
 
 export const query = graphql`
   query ProductQuery($shopifyId: String) {
@@ -53,14 +47,12 @@ export default function ProductTemplate(props) {
     );
   };
 
-  return (
+    return( 
     <Layout>
-      <SEO
-        description={props.data.shopifyProduct.description}
-        title={props.data.shopifyProduct.title}
-      />
-      <Button onClick={() => navigate(-1)}>Back to products</Button>
-      <Grid>
+      <Button onClick={() => navigate(-1)}>
+        Back to products
+      </Button>
+        <Grid>
         <div>
           <h1>{props.data.shopifyProduct.title}</h1>
           <p>{props.data.shopifyProduct.description}</p>
@@ -83,7 +75,7 @@ export default function ProductTemplate(props) {
               )}
               {!!selectedVariant && (
                 <>
-                  <Price>£{selectedVariant.price}</Price>
+                  <Price>${selectedVariant.price}</Price>
                   <ProductQuantityAdder
                     available={selectedVariant.available}
                     variantId={selectedVariant.id}
@@ -100,6 +92,6 @@ export default function ProductTemplate(props) {
           />
         </div>
       </Grid>
-    </Layout>
-  );
+        </Layout>
+    )
 }
