@@ -1,20 +1,30 @@
 import React from 'react';
-import { Layout, SEO, HompepageCollectionsGrid, FeatureProducts } from 'components';
-import ProductContext from 'context/ProductContext'
+import {
+  Layout,
+  SEO,
+  HomepageCollectionsGrid,
+  FeaturedProducts,
+} from 'components';
+import ProductContext from 'context/ProductContext';
 
 const IndexPage = () => {
-  const {collections} = React.useContext(ProductContext)
-  console.log(collections)
-  return(
+  const { collections } = React.useContext(ProductContext);
+
+  return (
     <Layout>
-      <HompepageCollectionsGrid collections={collections.filter(
-        collection => collection.title !== 'Featured Hats' )}/>
-        {!!collections.find(
-          collection => collection.title === 'Featured Hats'
-          ) && <FeatureProducts/>}
-      
+      <SEO description="The MadHatter store homepage" title="Homepage" />
+      <HomepageCollectionsGrid
+        collections={
+          collections.filter(
+            collection => collection.title !== 'Featured Hats'
+          ) || []
+        }
+      />
+      {!!collections.find(
+        collection => collection.title === 'Featured Hats'
+      ) && <FeaturedProducts />}
     </Layout>
-  )
+  );
 };
 
 export default IndexPage;

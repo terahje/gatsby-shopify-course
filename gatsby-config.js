@@ -4,11 +4,12 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Shopify Starter`,
-    description: `Gatsby & Shopify Starter for the WebDevEducation course.`,
+    title: `MadHatter Store`,
+    description: `We're mad about hats`,
     author: `@tomphill`,
   },
   plugins: [
+    `gatsby-plugin-remove-fingerprints`,
     `gatsby-plugin-styled-components`,
     `gatsby-optional-chaining`,
     {
@@ -45,7 +46,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-shopify-starter`,
+        name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,

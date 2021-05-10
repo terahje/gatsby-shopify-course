@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const SearchForm = styled.div`
-    display: flex;
-    margin-left: auto; 
+export const SearchForm = styled.form`
+  display: flex;
+  margin-left: auto;
 `;
